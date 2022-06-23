@@ -1,29 +1,38 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'structure_model.freezed.dart';
 
-@freezed
-class TestFolder with _$TestFolder {
-  const factory TestFolder({
-    required String name,
-    required List<TestFolder> subfolders,
-    required List<GoldenFolder> goldenFolders,
-  }) = _TestFolder;
+class TestFolder extends Equatable {
+  TestFolder({required this.name});
+  TestFolder.empty() : name = '';
+
+  final String name;
+  final List<TestFolder> subfolders = [];
+  final List<GoldenFolder> goldenFolders = [];
+
+  bool get isEmpty => name.isEmpty;
+
+  @override
+  List<Object?> get props => [name];
 }
 
-@freezed
-class GoldenFolder with _$GoldenFolder {
-  const factory GoldenFolder({
-    required String name,
-    required List<GoldenFolder> subfolders,
-    required List<GoldenImage> goldenImages,
-  }) = _GoldenFolder;
+class GoldenFolder extends Equatable {
+  GoldenFolder({required this.name});
+
+  final String name;
+  final List<GoldenFolder> subfolders = [];
+  final List<GoldenImage> goldenImages = [];
+
+  @override
+  List<Object?> get props => [name];
 }
 
 @freezed
 class GoldenImage with _$GoldenImage {
   const factory GoldenImage({
     required String name,
+    required String path,
     Device? device,
     Locale? locale,
     Theme? theme,

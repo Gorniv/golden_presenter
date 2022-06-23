@@ -14,6 +14,7 @@ class GoldenPresenterBloc {
   final StructureGenerator _structureGenerator;
   final StructurePresenter _structurePresenter;
   final StructureSaver _structureSaver;
+
   Future<void> process() async {
     final structure = await _structureGenerator.generate();
     final presentation = _structurePresenter.generate(testFolder: structure);

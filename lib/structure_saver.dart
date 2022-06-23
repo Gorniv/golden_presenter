@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'structure_model.dart';
 
 abstract class StructureSaver {
@@ -6,8 +8,9 @@ abstract class StructureSaver {
 
 class FileStructureSaver implements StructureSaver {
   @override
-  Future<void> save({required GoldenPresenterResult goldenPresenterResult}) {
-    // TODO: implement save
-    throw UnimplementedError();
+  Future<void> save(
+      {required GoldenPresenterResult goldenPresenterResult}) async {
+    final newFile = File('output.html');
+    await newFile.writeAsString(goldenPresenterResult.body);
   }
 }

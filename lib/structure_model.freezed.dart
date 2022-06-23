@@ -15,355 +15,9 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TestFolder {
-  String get name => throw _privateConstructorUsedError;
-  List<TestFolder> get subfolders => throw _privateConstructorUsedError;
-  List<GoldenFolder> get goldenFolders => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TestFolderCopyWith<TestFolder> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TestFolderCopyWith<$Res> {
-  factory $TestFolderCopyWith(
-          TestFolder value, $Res Function(TestFolder) then) =
-      _$TestFolderCopyWithImpl<$Res>;
-  $Res call(
-      {String name,
-      List<TestFolder> subfolders,
-      List<GoldenFolder> goldenFolders});
-}
-
-/// @nodoc
-class _$TestFolderCopyWithImpl<$Res> implements $TestFolderCopyWith<$Res> {
-  _$TestFolderCopyWithImpl(this._value, this._then);
-
-  final TestFolder _value;
-  // ignore: unused_field
-  final $Res Function(TestFolder) _then;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? subfolders = freezed,
-    Object? goldenFolders = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      subfolders: subfolders == freezed
-          ? _value.subfolders
-          : subfolders // ignore: cast_nullable_to_non_nullable
-              as List<TestFolder>,
-      goldenFolders: goldenFolders == freezed
-          ? _value.goldenFolders
-          : goldenFolders // ignore: cast_nullable_to_non_nullable
-              as List<GoldenFolder>,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_TestFolderCopyWith<$Res>
-    implements $TestFolderCopyWith<$Res> {
-  factory _$$_TestFolderCopyWith(
-          _$_TestFolder value, $Res Function(_$_TestFolder) then) =
-      __$$_TestFolderCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String name,
-      List<TestFolder> subfolders,
-      List<GoldenFolder> goldenFolders});
-}
-
-/// @nodoc
-class __$$_TestFolderCopyWithImpl<$Res> extends _$TestFolderCopyWithImpl<$Res>
-    implements _$$_TestFolderCopyWith<$Res> {
-  __$$_TestFolderCopyWithImpl(
-      _$_TestFolder _value, $Res Function(_$_TestFolder) _then)
-      : super(_value, (v) => _then(v as _$_TestFolder));
-
-  @override
-  _$_TestFolder get _value => super._value as _$_TestFolder;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? subfolders = freezed,
-    Object? goldenFolders = freezed,
-  }) {
-    return _then(_$_TestFolder(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      subfolders: subfolders == freezed
-          ? _value._subfolders
-          : subfolders // ignore: cast_nullable_to_non_nullable
-              as List<TestFolder>,
-      goldenFolders: goldenFolders == freezed
-          ? _value._goldenFolders
-          : goldenFolders // ignore: cast_nullable_to_non_nullable
-              as List<GoldenFolder>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_TestFolder implements _TestFolder {
-  const _$_TestFolder(
-      {required this.name,
-      required final List<TestFolder> subfolders,
-      required final List<GoldenFolder> goldenFolders})
-      : _subfolders = subfolders,
-        _goldenFolders = goldenFolders;
-
-  @override
-  final String name;
-  final List<TestFolder> _subfolders;
-  @override
-  List<TestFolder> get subfolders {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subfolders);
-  }
-
-  final List<GoldenFolder> _goldenFolders;
-  @override
-  List<GoldenFolder> get goldenFolders {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_goldenFolders);
-  }
-
-  @override
-  String toString() {
-    return 'TestFolder(name: $name, subfolders: $subfolders, goldenFolders: $goldenFolders)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TestFolder &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other._subfolders, _subfolders) &&
-            const DeepCollectionEquality()
-                .equals(other._goldenFolders, _goldenFolders));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(_subfolders),
-      const DeepCollectionEquality().hash(_goldenFolders));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_TestFolderCopyWith<_$_TestFolder> get copyWith =>
-      __$$_TestFolderCopyWithImpl<_$_TestFolder>(this, _$identity);
-}
-
-abstract class _TestFolder implements TestFolder {
-  const factory _TestFolder(
-      {required final String name,
-      required final List<TestFolder> subfolders,
-      required final List<GoldenFolder> goldenFolders}) = _$_TestFolder;
-
-  @override
-  String get name => throw _privateConstructorUsedError;
-  @override
-  List<TestFolder> get subfolders => throw _privateConstructorUsedError;
-  @override
-  List<GoldenFolder> get goldenFolders => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_TestFolderCopyWith<_$_TestFolder> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$GoldenFolder {
-  String get name => throw _privateConstructorUsedError;
-  List<GoldenFolder> get subfolders => throw _privateConstructorUsedError;
-  List<GoldenImage> get goldenImages => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $GoldenFolderCopyWith<GoldenFolder> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $GoldenFolderCopyWith<$Res> {
-  factory $GoldenFolderCopyWith(
-          GoldenFolder value, $Res Function(GoldenFolder) then) =
-      _$GoldenFolderCopyWithImpl<$Res>;
-  $Res call(
-      {String name,
-      List<GoldenFolder> subfolders,
-      List<GoldenImage> goldenImages});
-}
-
-/// @nodoc
-class _$GoldenFolderCopyWithImpl<$Res> implements $GoldenFolderCopyWith<$Res> {
-  _$GoldenFolderCopyWithImpl(this._value, this._then);
-
-  final GoldenFolder _value;
-  // ignore: unused_field
-  final $Res Function(GoldenFolder) _then;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? subfolders = freezed,
-    Object? goldenImages = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      subfolders: subfolders == freezed
-          ? _value.subfolders
-          : subfolders // ignore: cast_nullable_to_non_nullable
-              as List<GoldenFolder>,
-      goldenImages: goldenImages == freezed
-          ? _value.goldenImages
-          : goldenImages // ignore: cast_nullable_to_non_nullable
-              as List<GoldenImage>,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_GoldenFolderCopyWith<$Res>
-    implements $GoldenFolderCopyWith<$Res> {
-  factory _$$_GoldenFolderCopyWith(
-          _$_GoldenFolder value, $Res Function(_$_GoldenFolder) then) =
-      __$$_GoldenFolderCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String name,
-      List<GoldenFolder> subfolders,
-      List<GoldenImage> goldenImages});
-}
-
-/// @nodoc
-class __$$_GoldenFolderCopyWithImpl<$Res>
-    extends _$GoldenFolderCopyWithImpl<$Res>
-    implements _$$_GoldenFolderCopyWith<$Res> {
-  __$$_GoldenFolderCopyWithImpl(
-      _$_GoldenFolder _value, $Res Function(_$_GoldenFolder) _then)
-      : super(_value, (v) => _then(v as _$_GoldenFolder));
-
-  @override
-  _$_GoldenFolder get _value => super._value as _$_GoldenFolder;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? subfolders = freezed,
-    Object? goldenImages = freezed,
-  }) {
-    return _then(_$_GoldenFolder(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      subfolders: subfolders == freezed
-          ? _value._subfolders
-          : subfolders // ignore: cast_nullable_to_non_nullable
-              as List<GoldenFolder>,
-      goldenImages: goldenImages == freezed
-          ? _value._goldenImages
-          : goldenImages // ignore: cast_nullable_to_non_nullable
-              as List<GoldenImage>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_GoldenFolder implements _GoldenFolder {
-  const _$_GoldenFolder(
-      {required this.name,
-      required final List<GoldenFolder> subfolders,
-      required final List<GoldenImage> goldenImages})
-      : _subfolders = subfolders,
-        _goldenImages = goldenImages;
-
-  @override
-  final String name;
-  final List<GoldenFolder> _subfolders;
-  @override
-  List<GoldenFolder> get subfolders {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subfolders);
-  }
-
-  final List<GoldenImage> _goldenImages;
-  @override
-  List<GoldenImage> get goldenImages {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_goldenImages);
-  }
-
-  @override
-  String toString() {
-    return 'GoldenFolder(name: $name, subfolders: $subfolders, goldenImages: $goldenImages)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_GoldenFolder &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other._subfolders, _subfolders) &&
-            const DeepCollectionEquality()
-                .equals(other._goldenImages, _goldenImages));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(_subfolders),
-      const DeepCollectionEquality().hash(_goldenImages));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_GoldenFolderCopyWith<_$_GoldenFolder> get copyWith =>
-      __$$_GoldenFolderCopyWithImpl<_$_GoldenFolder>(this, _$identity);
-}
-
-abstract class _GoldenFolder implements GoldenFolder {
-  const factory _GoldenFolder(
-      {required final String name,
-      required final List<GoldenFolder> subfolders,
-      required final List<GoldenImage> goldenImages}) = _$_GoldenFolder;
-
-  @override
-  String get name => throw _privateConstructorUsedError;
-  @override
-  List<GoldenFolder> get subfolders => throw _privateConstructorUsedError;
-  @override
-  List<GoldenImage> get goldenImages => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_GoldenFolderCopyWith<_$_GoldenFolder> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$GoldenImage {
   String get name => throw _privateConstructorUsedError;
+  String get path => throw _privateConstructorUsedError;
   Device? get device => throw _privateConstructorUsedError;
   Locale? get locale => throw _privateConstructorUsedError;
   Theme? get theme => throw _privateConstructorUsedError;
@@ -378,7 +32,8 @@ abstract class $GoldenImageCopyWith<$Res> {
   factory $GoldenImageCopyWith(
           GoldenImage value, $Res Function(GoldenImage) then) =
       _$GoldenImageCopyWithImpl<$Res>;
-  $Res call({String name, Device? device, Locale? locale, Theme? theme});
+  $Res call(
+      {String name, String path, Device? device, Locale? locale, Theme? theme});
 
   $DeviceCopyWith<$Res>? get device;
   $LocaleCopyWith<$Res>? get locale;
@@ -396,6 +51,7 @@ class _$GoldenImageCopyWithImpl<$Res> implements $GoldenImageCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
+    Object? path = freezed,
     Object? device = freezed,
     Object? locale = freezed,
     Object? theme = freezed,
@@ -404,6 +60,10 @@ class _$GoldenImageCopyWithImpl<$Res> implements $GoldenImageCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
               as String,
       device: device == freezed
           ? _value.device
@@ -461,7 +121,8 @@ abstract class _$$_GoldenImageCopyWith<$Res>
           _$_GoldenImage value, $Res Function(_$_GoldenImage) then) =
       __$$_GoldenImageCopyWithImpl<$Res>;
   @override
-  $Res call({String name, Device? device, Locale? locale, Theme? theme});
+  $Res call(
+      {String name, String path, Device? device, Locale? locale, Theme? theme});
 
   @override
   $DeviceCopyWith<$Res>? get device;
@@ -484,6 +145,7 @@ class __$$_GoldenImageCopyWithImpl<$Res> extends _$GoldenImageCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? path = freezed,
     Object? device = freezed,
     Object? locale = freezed,
     Object? theme = freezed,
@@ -492,6 +154,10 @@ class __$$_GoldenImageCopyWithImpl<$Res> extends _$GoldenImageCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
               as String,
       device: device == freezed
           ? _value.device
@@ -513,10 +179,16 @@ class __$$_GoldenImageCopyWithImpl<$Res> extends _$GoldenImageCopyWithImpl<$Res>
 
 class _$_GoldenImage implements _GoldenImage {
   const _$_GoldenImage(
-      {required this.name, this.device, this.locale, this.theme});
+      {required this.name,
+      required this.path,
+      this.device,
+      this.locale,
+      this.theme});
 
   @override
   final String name;
+  @override
+  final String path;
   @override
   final Device? device;
   @override
@@ -526,7 +198,7 @@ class _$_GoldenImage implements _GoldenImage {
 
   @override
   String toString() {
-    return 'GoldenImage(name: $name, device: $device, locale: $locale, theme: $theme)';
+    return 'GoldenImage(name: $name, path: $path, device: $device, locale: $locale, theme: $theme)';
   }
 
   @override
@@ -535,6 +207,7 @@ class _$_GoldenImage implements _GoldenImage {
         (other.runtimeType == runtimeType &&
             other is _$_GoldenImage &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.path, path) &&
             const DeepCollectionEquality().equals(other.device, device) &&
             const DeepCollectionEquality().equals(other.locale, locale) &&
             const DeepCollectionEquality().equals(other.theme, theme));
@@ -544,6 +217,7 @@ class _$_GoldenImage implements _GoldenImage {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(path),
       const DeepCollectionEquality().hash(device),
       const DeepCollectionEquality().hash(locale),
       const DeepCollectionEquality().hash(theme));
@@ -557,12 +231,15 @@ class _$_GoldenImage implements _GoldenImage {
 abstract class _GoldenImage implements GoldenImage {
   const factory _GoldenImage(
       {required final String name,
+      required final String path,
       final Device? device,
       final Locale? locale,
       final Theme? theme}) = _$_GoldenImage;
 
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  String get path => throw _privateConstructorUsedError;
   @override
   Device? get device => throw _privateConstructorUsedError;
   @override
