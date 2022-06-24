@@ -4,3 +4,6 @@
 
 # Conventional directory for build output.
 build/
+
+output.html
+golden_presenter.exe
