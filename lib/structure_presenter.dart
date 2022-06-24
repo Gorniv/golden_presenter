@@ -15,35 +15,60 @@ class HtmlStructurePresenter implements StructurePresenter {
   }
 
   String _addRootFolders(List<TestFolder> rootTestFolders) {
-    final rootFolderTags = StringBuffer();
-    rootFolderTags.write('<ul>');
+    final tags = StringBuffer();
+    tags.write('<ul>');
     for (final rootTestFolder in rootTestFolders) {
-      rootFolderTags.write('<li>');
-      rootFolderTags.write(_addFolder(rootTestFolder));
-      rootFolderTags.write('</li>');
+      tags.write('<li>');
+      tags.write(_addFolder(rootTestFolder));
+      tags.write('</li>');
     }
-    rootFolderTags.write('</ul>');
-    return rootFolderTags.toString();
-  }
-
-  String _addElement(Element element) {
-    if (element is GoldenImage) {
-      return _addGoldenImage(element);
-    }
-    return _addFolder(element);
+    tags.write('</ul>');
+    return tags.toString();
   }
 
   String _addFolder(Element testFolder) {
-    final testFolderTags = StringBuffer();
-    testFolderTags.write('<h1>${testFolder.name}</h1>');
-    testFolderTags.write('<ul>');
-    for (final innerTestFolder in testFolder.subElements) {
-      testFolderTags.write('<li>');
-      testFolderTags.write(_addElement(innerTestFolder));
-      testFolderTags.write('</li>');
+    final tags = StringBuffer();
+    tags.write('<h1>${testFolder.name}</h1>');
+    tags.write('<ul>');
+    tags.write(_addFolders(testFolder.subElements));
+    tags.write(_addGoldenImages(testFolder.subElements));
+    tags.write('</ul>');
+    return tags.toString();
+  }
+
+  String _addFolders(List<Element> elements) {
+    final folders = elements.where((e) => e is! GoldenImage);
+    final tags = StringBuffer();
+    for (final folder in folders) {
+      tags.write('<li>');
+      tags.write(_addFolder(folder));
+      tags.write('</li>');
     }
-    testFolderTags.write('</ul>');
-    return testFolderTags.toString();
+    return tags.toString();
+  }
+
+  String _addGoldenImages(List<Element> elements) {
+    final folders = elements.whereType<GoldenImage>().toList();
+    folders.sort(_imageSortRule);
+    final tags = StringBuffer();
+    tags.write('<li>');
+    for (final folder in folders) {
+      tags.write(_addGoldenImage(folder));
+    }
+    tags.write('</li>');
+    return tags.toString();
+  }
+
+  int _imageSortRule(GoldenImage a, GoldenImage b) {
+    final compareByDevice = a.device.name.compareTo(b.device.name);
+    if (compareByDevice != 0) {
+      return compareByDevice;
+    }
+    final compareByTheme = a.theme.name.compareTo(b.theme.name);
+    if (compareByTheme != 0) {
+      return -compareByTheme;
+    }
+    return a.locale.name.compareTo(b.locale.name);
   }
 
   String _addGoldenImage(GoldenImage innerGoldenImage) {
