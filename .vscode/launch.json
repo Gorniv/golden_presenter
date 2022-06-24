@@ -8,7 +8,9 @@
             "name": "golden_presenter",
             "request": "launch",
             "type": "dart",
-            "program": "bin/golden_presenter.dart"
+            "program": "bin/golden_presenter.dart",
+            "args": ["--help"],
+            // "args": ["--path", "/Users/cyrax/projects/work/international-mobile-app/test"],
         }
     ]
 }
