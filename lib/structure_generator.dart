@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path/path.dart' as pth;
 
+import 'golden_image_factory.dart';
 import 'structure_model.dart';
 
 abstract class StructureGenerator {
@@ -13,12 +14,16 @@ class FileStructureGenerator implements StructureGenerator {
     required this.pathToTest,
     required this.goldenPathName,
     required Directory directoryProvider,
-  }) : _directory = directoryProvider;
+    required GoldenImageFactory goldenImageFactory,
+  })  : _directory = directoryProvider,
+        _goldenImageFactory = goldenImageFactory;
 
   final Directory _directory;
 
   final String pathToTest;
   final String goldenPathName;
+
+  final GoldenImageFactory _goldenImageFactory;
 
   List<TestFolder> testFoldersResult = [];
 
@@ -34,7 +39,10 @@ class FileStructureGenerator implements StructureGenerator {
       }
 
       final relativePath = _getRelativePath(entity.uri.path);
-      _addTestFolderToResult(relativePath);
+      _addTestFolderToResult(
+        relativeFile: relativePath,
+        absoluteFile: entity.uri.path,
+      );
     });
     // print(testFoldersResult);
 
@@ -46,7 +54,10 @@ class FileStructureGenerator implements StructureGenerator {
     return pth.relative(absolutePath, from: pathForRemove);
   }
 
-  void _addTestFolderToResult(String relativeFile) {
+  void _addTestFolderToResult({
+    required String relativeFile,
+    required String absoluteFile,
+  }) {
     final strFolders = pth.split(relativeFile);
     List<TestFolder> parentTestFolder = testFoldersResult;
     late TestFolder foundTestFolder;
@@ -95,9 +106,9 @@ class FileStructureGenerator implements StructureGenerator {
     goldenImages.firstWhere(
       (e) => e.name == image,
       orElse: () {
-        final newGoldenImage = GoldenImage(
+        final newGoldenImage = _goldenImageFactory.build(
           name: image,
-          path: relativeFile,
+          path: absoluteFile,
         );
         goldenImages.add(newGoldenImage);
         return newGoldenImage;

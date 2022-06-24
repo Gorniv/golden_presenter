@@ -3,13 +3,25 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'structure_model.freezed.dart';
 
+// for rebuild models run:
+// dart run build_runner build
+
 class TestFolder extends Equatable {
-  TestFolder({required this.name});
-  TestFolder.empty() : name = '';
+  TestFolder({
+    required this.name,
+    List<TestFolder>? subfolders,
+    List<GoldenFolder>? goldenFolders,
+  })  : subfolders = subfolders ?? [],
+        goldenFolders = goldenFolders ?? [];
+
+  TestFolder.empty()
+      : name = '',
+        subfolders = [],
+        goldenFolders = [];
 
   final String name;
-  final List<TestFolder> subfolders = [];
-  final List<GoldenFolder> goldenFolders = [];
+  final List<TestFolder> subfolders;
+  final List<GoldenFolder> goldenFolders;
 
   bool get isEmpty => name.isEmpty;
 
@@ -18,11 +30,16 @@ class TestFolder extends Equatable {
 }
 
 class GoldenFolder extends Equatable {
-  GoldenFolder({required this.name});
+  GoldenFolder({
+    required this.name,
+    List<GoldenFolder>? subfolders,
+    List<GoldenImage>? goldenImages,
+  })  : subfolders = subfolders ?? [],
+        goldenImages = goldenImages ?? [];
 
   final String name;
-  final List<GoldenFolder> subfolders = [];
-  final List<GoldenImage> goldenImages = [];
+  final List<GoldenFolder> subfolders;
+  final List<GoldenImage> goldenImages;
 
   @override
   List<Object?> get props => [name];
@@ -33,9 +50,9 @@ class GoldenImage with _$GoldenImage {
   const factory GoldenImage({
     required String name,
     required String path,
-    Device? device,
-    Locale? locale,
-    Theme? theme,
+    required Device device,
+    required Locale locale,
+    required Theme theme,
   }) = _GoldenImage;
 }
 

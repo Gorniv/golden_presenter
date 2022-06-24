@@ -1,3 +1,5 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'structure_model.dart';
 
 class GoldenImageFactory {
@@ -10,7 +12,8 @@ class GoldenImageFactory {
   final String localePattern;
   final String themePattern;
 
-  static const String _unknownName = 'unknown';
+  @visibleForTesting
+  static const String unknownName = 'unknown';
 
   GoldenImage build({required String name, required String path}) {
     return GoldenImage(
@@ -41,8 +44,8 @@ class GoldenImageFactory {
     final regExp = RegExp(pattern);
     final matches = regExp.firstMatch(source);
     if (matches != null && matches.groupCount > 0) {
-      return matches.group(1) ?? _unknownName;
+      return matches.group(1) ?? unknownName;
     }
-    return _unknownName;
+    return unknownName;
   }
 }
