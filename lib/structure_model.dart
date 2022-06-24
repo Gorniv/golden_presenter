@@ -56,6 +56,7 @@ class GoldenImage extends Element with EquatableMixin {
     required this.theme,
   });
 
+  @override
   final String name;
   final String path;
   final Device device;
