@@ -6,22 +6,25 @@ part 'structure_model.freezed.dart';
 // for rebuild models run:
 // dart run build_runner build
 
-class TestFolder extends Equatable {
+abstract class Element {
+  String get name;
+  List<Element> get subElements => const [];
+}
+
+class TestFolder extends Element with EquatableMixin {
   TestFolder({
     required this.name,
-    List<TestFolder>? subfolders,
-    List<GoldenFolder>? goldenFolders,
-  })  : subfolders = subfolders ?? [],
-        goldenFolders = goldenFolders ?? [];
+    List<Element>? subElements,
+  }) : subElements = subElements ?? [];
 
   TestFolder.empty()
       : name = '',
-        subfolders = [],
-        goldenFolders = [];
+        subElements = [];
 
+  @override
   final String name;
-  final List<TestFolder> subfolders;
-  final List<GoldenFolder> goldenFolders;
+  @override
+  final List<Element> subElements;
 
   bool get isEmpty => name.isEmpty;
 
@@ -29,31 +32,38 @@ class TestFolder extends Equatable {
   List<Object?> get props => [name];
 }
 
-class GoldenFolder extends Equatable {
+class GoldenFolder extends Element with EquatableMixin {
   GoldenFolder({
     required this.name,
-    List<GoldenFolder>? subfolders,
-    List<GoldenImage>? goldenImages,
-  })  : subfolders = subfolders ?? [],
-        goldenImages = goldenImages ?? [];
+    List<Element>? subElements,
+  }) : subElements = subElements ?? [];
 
+  @override
   final String name;
-  final List<GoldenFolder> subfolders;
-  final List<GoldenImage> goldenImages;
+  @override
+  final List<Element> subElements;
 
   @override
   List<Object?> get props => [name];
 }
 
-@freezed
-class GoldenImage with _$GoldenImage {
-  const factory GoldenImage({
-    required String name,
-    required String path,
-    required Device device,
-    required Locale locale,
-    required Theme theme,
-  }) = _GoldenImage;
+class GoldenImage extends Element with EquatableMixin {
+  GoldenImage({
+    required this.name,
+    required this.path,
+    required this.device,
+    required this.locale,
+    required this.theme,
+  });
+
+  final String name;
+  final String path;
+  final Device device;
+  final Locale locale;
+  final Theme theme;
+
+  @override
+  List<Object?> get props => [name, device, locale, theme];
 }
 
 @freezed

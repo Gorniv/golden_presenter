@@ -19,50 +19,34 @@ class HtmlStructurePresenter implements StructurePresenter {
     rootFolderTags.write('<ul>');
     for (final rootTestFolder in rootTestFolders) {
       rootFolderTags.write('<li>');
-      rootFolderTags.write(_addTestFolder(rootTestFolder));
+      rootFolderTags.write(_addFolder(rootTestFolder));
       rootFolderTags.write('</li>');
     }
     rootFolderTags.write('</ul>');
     return rootFolderTags.toString();
   }
 
-  String _addTestFolder(TestFolder testFolder) {
+  String _addElement(Element element) {
+    if (element is GoldenImage) {
+      return _addGoldenImage(element);
+    }
+    return _addFolder(element);
+  }
+
+  String _addFolder(Element testFolder) {
     final testFolderTags = StringBuffer();
     testFolderTags.write('<h1>${testFolder.name}</h1>');
     testFolderTags.write('<ul>');
-    for (final innerTestFolder in testFolder.subfolders) {
+    for (final innerTestFolder in testFolder.subElements) {
       testFolderTags.write('<li>');
-      testFolderTags.write(_addTestFolder(innerTestFolder));
-      testFolderTags.write('</li>');
-    }
-    for (final innerGoldenFolder in testFolder.goldenFolders) {
-      testFolderTags.write('<li>');
-      testFolderTags.write(_addGoldenFolder(innerGoldenFolder));
+      testFolderTags.write(_addElement(innerTestFolder));
       testFolderTags.write('</li>');
     }
     testFolderTags.write('</ul>');
     return testFolderTags.toString();
   }
 
-  String _addGoldenFolder(GoldenFolder goldenFolder) {
-    final goldenFolderTags = StringBuffer();
-    goldenFolderTags.write('<h1>${goldenFolder.name}</h1>');
-    goldenFolderTags.write('<ul>');
-    for (final innerGoldenFolder in goldenFolder.subfolders) {
-      goldenFolderTags.write('<li>');
-      goldenFolderTags.write(_addGoldenFolder(innerGoldenFolder));
-      goldenFolderTags.write('</li>');
-    }
-    for (final innerGoldenImage in goldenFolder.goldenImages) {
-      goldenFolderTags.write('<li>');
-      goldenFolderTags.write(_addGoldenImage(innerGoldenImage));
-      goldenFolderTags.write('</li>');
-    }
-    goldenFolderTags.write('</ul>');
-    return goldenFolderTags.toString();
-  }
-
   String _addGoldenImage(GoldenImage innerGoldenImage) {
-    return '<img src="${innerGoldenImage.path}" />';
+    return '<img src="${innerGoldenImage.path}"/>';
   }
 }

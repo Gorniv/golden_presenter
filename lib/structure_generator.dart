@@ -44,7 +44,6 @@ class FileStructureGenerator implements StructureGenerator {
         absoluteFile: entity.uri.path,
       );
     });
-    // print(testFoldersResult);
 
     return testFoldersResult;
   }
@@ -59,8 +58,10 @@ class FileStructureGenerator implements StructureGenerator {
     required String absoluteFile,
   }) {
     final strFolders = pth.split(relativeFile);
-    List<TestFolder> parentTestFolder = testFoldersResult;
-    late TestFolder foundTestFolder;
+
+    // test folder
+    List<Element> parentTestFolder = testFoldersResult;
+    late Element foundTestFolder;
     int lastFolderIndex = strFolders.length - 2;
     int testFolderIndex;
     for (testFolderIndex = 0;
@@ -78,12 +79,12 @@ class FileStructureGenerator implements StructureGenerator {
           return newTestFolder;
         },
       );
-      parentTestFolder = foundTestFolder.subfolders;
+      parentTestFolder = foundTestFolder.subElements;
     }
 
-    // goldenFolder
-    List<GoldenFolder> parentGoldenFolder = foundTestFolder.goldenFolders;
-    late List<GoldenImage> goldenImages;
+    // golden folder
+    List<Element> parentGoldenFolder = foundTestFolder.subElements;
+    late List<Element> goldenImages;
     for (int testGoldenIndex = testFolderIndex;
         testGoldenIndex <= lastFolderIndex;
         testGoldenIndex++) {
@@ -96,11 +97,11 @@ class FileStructureGenerator implements StructureGenerator {
           return newGoldenFolder;
         },
       );
-      parentGoldenFolder = foundFolder.subfolders;
-      goldenImages = foundFolder.goldenImages;
+      parentGoldenFolder = foundFolder.subElements;
+      goldenImages = foundFolder.subElements;
     }
 
-    // image
+    // golden image
     int imageFileIndex = strFolders.length - 1;
     final image = strFolders[imageFileIndex];
     goldenImages.firstWhere(

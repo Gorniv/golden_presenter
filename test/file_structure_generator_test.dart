@@ -30,19 +30,19 @@ void main() {
         [
           TestFolder(
             name: 'settings',
-            subfolders: [
+            subElements: [
               TestFolder(
                 name: 'super_settings',
-                subfolders: [
+                subElements: [
                   TestFolder(
                     name: 'one_more_setting',
-                    goldenFolders: [
+                    subElements: [
                       GoldenFolder(
                         name: 'language',
-                        subfolders: [
+                        subElements: [
                           GoldenFolder(
                             name: 'switch_language',
-                            goldenImages: [
+                            subElements: [
                               GoldenImage(
                                 name: 'iPhone5S',
                                 path:
