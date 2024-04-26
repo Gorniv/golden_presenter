@@ -9,8 +9,8 @@
             "request": "launch",
             "type": "dart",
             "program": "bin/golden_presenter.dart",
-            "args": ["--help"],
-            // "args": ["--path", "/Users/cyrax/projects/work/international-mobile-app/test"],
+            // "args": ["--help"],
+            "args": ["--path", "/Users/gorniv/Tapnetic/visory/test/test"],
         }
     ]
 }

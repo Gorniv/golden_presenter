@@ -37,14 +37,13 @@ class FileStructureGenerator implements StructureGenerator {
       if (ext != '.png') {
         return;
       }
-
       final relativePath = _getRelativePath(entity.uri.path);
       _addTestFolderToResult(
         relativeFile: relativePath,
         absoluteFile: entity.uri.path,
       );
     });
-
+    print('found folders == ${testFoldersResult.length}');
     return testFoldersResult;
   }
 

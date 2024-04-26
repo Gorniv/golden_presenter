@@ -16,6 +16,8 @@ class FileStructureSaver implements StructureSaver {
   Future<void> save(
       {required GoldenPresenterResult goldenPresenterResult}) async {
     final newFile = File(outputFileName);
+    print('save to $newFile');
     await newFile.writeAsString(goldenPresenterResult.body);
+    print('finish');
   }
 }
