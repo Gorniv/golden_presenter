@@ -83,7 +83,7 @@ class FileStructureGenerator implements StructureGenerator {
 
     // golden folder
     List<Element> parentGoldenFolder = foundTestFolder.subElements;
-    late List<Element> goldenImages;
+    List<Element> goldenImages = [];
     for (int testGoldenIndex = testFolderIndex;
         testGoldenIndex <= lastFolderIndex;
         testGoldenIndex++) {

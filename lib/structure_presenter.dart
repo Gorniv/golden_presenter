@@ -103,7 +103,9 @@ class HtmlStructurePresenter implements StructurePresenter {
 
   String _addFolder(Element testFolder) {
     final tags = StringBuffer();
-    tags.write('<h1>${testFolder.name}</h1>');
+    if (testFolder.name.toLowerCase() != 'golden') {
+      tags.write('<h2>${testFolder.name}</h2>');
+    }
 
     // final haveImages = testFolder.subElements.whereType<GoldenImage>().isNotEmpty;
     // if (haveImages) {

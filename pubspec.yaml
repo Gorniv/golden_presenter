@@ -1,6 +1,6 @@
 name: golden_presenter
 description: A pure dart html golden page generator.
-version: 0.0.2
+version: 0.0.3
 # homepage: https://www.example.com
 
 environment:
